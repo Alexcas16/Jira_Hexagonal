@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.jiraHex.tarea.dominio.Enums.EnumEstado;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,17 +27,36 @@ public class TareaEntity {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private UUID id;
-	private Long tareadId;
-	private String titulo;
-	private String descripcion;
-	@Enumerated(value = EnumType.STRING)
-	private EnumEstado estado;
-	private Integer prioridad;
-	private LocalDate fechaEntrega;
+
+    @Column(name = "tarea_id")
+    @NotNull
+    private Long tareaId;
+
+    @Column(name = "titulo")
+    @NotNull
+    private String titulo;
+
+    @Column(name = "descripcion")
+    @NotNull
+    private String descripcion;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    @NotNull
+    private EnumEstado estado;
+
+    @Column(name = "prioridad")
+    @NotNull
+    private Integer prioridad;
+
+    @Column(name = "fecha_entrega")
+    @NotNull
+    private LocalDate fechaEntrega;
 	
 	public TareaEntity(Long tareaId, String titulo, String descripcion, EnumEstado estado, Integer prioridad, LocalDate fechaEntrega) {
-        this.tareadId = tareaId;
+        this.tareaId = tareaId;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.estado = estado;

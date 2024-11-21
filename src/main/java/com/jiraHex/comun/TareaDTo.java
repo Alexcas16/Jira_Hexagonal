@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.jiraHex.tarea.dominio.Enums.EnumEstado;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +14,23 @@ import lombok.Setter;
 @Setter
 public class TareaDTo {
 
+	@NotNull
 	private Long tareaId;
+	
+	@NotNull
     private String titulo;
-    private String descripcion;
-    private EnumEstado estado;
-    private Integer prioridad;
-    private LocalDate fechaEntrega;
+	
+	@NotNull
+	private String descripcion;
+    
+	@NotNull
+	private EnumEstado estado;
+    
+	@NotNull
+	private Integer prioridad;
+    
+	@NotNull
+	private LocalDate fechaEntrega;
     
 	public TareaDTo(Long tareaId, String titulo, String descripcion, EnumEstado estado, Integer prioridad,
 			LocalDate fechaEntrega) {

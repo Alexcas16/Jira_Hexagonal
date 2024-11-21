@@ -1,5 +1,7 @@
 package com.jiraHex.tarea.apliacion;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.jiraHex.tarea.dominio.modelos.Tarea;
@@ -16,6 +18,16 @@ public class ProveedorTareaImpl implements IProveedorTarea {
 	@Override
 	public Tarea obtenerTareaPorId(Long id) {
 		return tareaPuerto.obtenerTareaPorId(id);
+	}
+	
+	@Override
+	public List<Tarea> obtenerTodasLasTareas() {
+		return tareaPuerto.obtenerTodasLasTareas();
+	}
+
+	@Override
+	public void crearTarea(Tarea t) {
+		tareaPuerto.crearTarea(t);
 	}
 
 }

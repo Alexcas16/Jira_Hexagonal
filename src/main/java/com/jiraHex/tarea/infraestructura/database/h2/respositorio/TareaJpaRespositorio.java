@@ -13,6 +13,6 @@ import com.jiraHex.tarea.infraestructura.database.h2.entidades.TareaEntity;
 @Repository
 public interface TareaJpaRespositorio extends JpaRepository<TareaEntity, UUID>{
 	
-	 @Query("SELECT t FROM TareaEntity t WHERE t.tareadId = :id")
+	 @Query("SELECT t FROM TareaEntity t WHERE t.tareaId = :id")
 	 Optional<TareaEntity> obtenerTareaPorId(@Param("id") Long id);
 }

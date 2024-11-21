@@ -5,9 +5,9 @@ import com.jiraHex.tarea.infraestructura.database.h2.entidades.TareaEntity;
 
 public class TareaEntityMapper {
 
-	 public static Tarea fromEntityToTarea(TareaEntity tareaEntity) {
+	public static Tarea fromEntityToTarea(TareaEntity tareaEntity) {
         return new Tarea(
-           tareaEntity.getTareadId(),
+           tareaEntity.getTareaId(),
            tareaEntity.getTitulo(),
            tareaEntity.getDescripcion(),
            tareaEntity.getEstado(),
@@ -15,4 +15,15 @@ public class TareaEntityMapper {
            tareaEntity.getFechaEntrega()
         );
     }
+	 
+	public static TareaEntity fromTareaToEntity(Tarea tarea) {
+	    return new TareaEntity(
+    		tarea.getTareaId(),
+    		tarea.getTitulo(),
+    		tarea.getDescripcion(),
+    		tarea.getEstado(),
+    		tarea.getPrioridad(),
+	       tarea.getFechaEntrega()
+	    );
+	}
 }

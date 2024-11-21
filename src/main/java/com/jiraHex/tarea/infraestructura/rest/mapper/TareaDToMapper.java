@@ -15,4 +15,16 @@ public class TareaDToMapper {
         		tarea.getFechaEntrega()
         );
     }
+	
+	public static Tarea fromDToToTarea(TareaDTo tareaDTo) {
+        return new Tarea(
+        		tareaDTo.getTareaId(),
+        		tareaDTo.getTitulo(),
+        		tareaDTo.getDescripcion(),
+        		tareaDTo.getEstado(),
+        		tareaDTo.getPrioridad(),
+        		tareaDTo.getFechaEntrega()
+        );
+    }
+	
 }

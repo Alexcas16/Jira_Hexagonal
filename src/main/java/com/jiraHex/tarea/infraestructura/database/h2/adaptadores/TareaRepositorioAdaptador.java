@@ -1,5 +1,6 @@
 package com.jiraHex.tarea.infraestructura.database.h2.adaptadores;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Component;
@@ -26,7 +27,15 @@ public class TareaRepositorioAdaptador implements TareaPuerto {
 
 	@Override
 	public void crearTarea(Tarea t) {
-		
+		tareaJpaRespositorio.save(TareaEntityMapper.fromTareaToEntity(t));
 	}
+	
+	@Override
+    public List<Tarea> obtenerTodasLasTareas() {
+        return tareaJpaRespositorio.findAll()
+		        .stream()
+		        .map(TareaEntityMapper::fromEntityToTarea)
+		        .toList();
+    }
 
 }

@@ -38,4 +38,9 @@ public class TareaRepositorioAdaptador implements TareaPuerto {
 		        .toList();
     }
 
+	@Override
+	public void eliminarTareaPorId(Long id) {
+		tareaJpaRespositorio.eliminarTareaPorId(id);
+	}
+
 }

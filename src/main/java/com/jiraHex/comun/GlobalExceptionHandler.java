@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.jiraHex.comun.exceptions.TareaYaExisteException;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
@@ -28,6 +30,13 @@ public class GlobalExceptionHandler {
         log.info("ConstraintViolationException (400) handled");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body("WRONG DATA FORMAT, request: " + httpRequest.getRequestURI());
+    }
+	
+	@ExceptionHandler(TareaYaExisteException.class)
+    public ResponseEntity<String> handleTareaYaExisteException(TareaYaExisteException exception, HttpServletRequest httpRequest) throws UnsupportedEncodingException {
+        log.info("TareaYaExisteException (400) handled");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body("EL ID INTRODUCIDO YA EXISTE, request: " + httpRequest.getRequestURI());
     }
 
 }

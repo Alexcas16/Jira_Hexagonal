@@ -12,4 +12,6 @@ public interface TareaPuerto {
 	
 	List<Tarea> obtenerTodasLasTareas();
 	
+	void eliminarTareaPorId(Long id);
+	
 }

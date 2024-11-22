@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jiraHex.comun.TareaDTo;
+import com.jiraHex.comun.exceptions.TareaYaExisteException;
 import com.jiraHex.tarea.apliacion.IProveedorTarea;
 import com.jiraHex.tarea.infraestructura.rest.mapper.TareaDToMapper;
 
@@ -38,10 +39,16 @@ public class TareaRestController {
     }
 	
 	@PostMapping("/crearTarea")
-    public ResponseEntity<TareaDTo> crearTarea(@RequestBody TareaDTo tareaDTO) {		
+    public ResponseEntity<TareaDTo> crearTarea(@RequestBody TareaDTo tareaDTO) throws TareaYaExisteException {		
         proveedorTarea.crearTarea(TareaDToMapper.fromDToToTarea(tareaDTO));
-
         return ResponseEntity.status(HttpStatus.CREATED).body(tareaDTO);
+    }
+	
+	@PostMapping("/eliminarTareaPorId/{tareaId}")
+    public ResponseEntity<Boolean> eliminarTareaPorId(@PathVariable String tareaId) {
+		Long tareaIdLong = Long.valueOf(tareaId);
+		proveedorTarea.eliminarTareaPorId(tareaIdLong);
+		return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 	
 }

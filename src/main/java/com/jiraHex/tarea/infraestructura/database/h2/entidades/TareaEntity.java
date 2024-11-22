@@ -64,5 +64,4 @@ public class TareaEntity {
         this.fechaEntrega = fechaEntrega;
     }
 
-	
 }

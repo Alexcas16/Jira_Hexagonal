@@ -15,4 +15,6 @@ public interface IProveedorTarea {
 	
 	void eliminarTareaPorId(Long id);
 	
+	void prueba(Long id);
+	
 }

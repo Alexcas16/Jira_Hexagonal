@@ -54,4 +54,10 @@ public class ProveedorTareaImpl implements IProveedorTarea {
 		}
 	}
 
+	@Override
+	public void prueba(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

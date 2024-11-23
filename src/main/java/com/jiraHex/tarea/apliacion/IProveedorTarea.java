@@ -14,7 +14,4 @@ public interface IProveedorTarea {
 	void crearTarea(Tarea t) throws TareaYaExisteException;
 	
 	void eliminarTareaPorId(Long id);
-	
-	void prueba(Long id);
-	
 }
